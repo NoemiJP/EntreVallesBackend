@@ -17,6 +17,6 @@ public interface ExperienciasRepository extends JpaRepository<Experiencia, Long>
 	           "(SELECT r.experiencia FROM Reserva r WHERE r.fechaInicio BETWEEN :fechaInicio AND :fechaFin AND r.fechaFin BETWEEN :fechaInicio AND :fechaFin)")
 	public List<Experiencia> filterByBookDates(@Param("fechaInicio")Date fechaInicio,@Param("fechaFin")Date fechaFin);
 	
-	@Query(value = "SELECT e FROM Experiencia e WHERE (:localizacion IS NULL OR e.localizacion IN (:localizacion))")
-	public List<Experiencia> filter(@Param("localizacion")List<String> localizacion);
+	@Query(value = "SELECT e FROM Experiencia e LEFT JOIN e.equipamientos eq WHERE (:localizacion IS NULL OR e.localizacion IN (:localizacion)) AND (:alojamiento IS NULL OR e.tipoAlojamiento IN (:alojamiento)) AND (:equipamiento IS NULL OR eq.tipo IN (:equipamiento))")
+	public List<Experiencia> filter(@Param("localizacion")List<String> localizacion, @Param("alojamiento")List<String> alojamiento,  @Param("equipamiento")List<String> equipamiento);
 }

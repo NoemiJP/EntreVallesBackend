@@ -24,7 +24,7 @@ public class ExperienciasController {
 
 	@PostMapping("/experiencias")
 	public @ResponseBody List<Experiencia> prueba(@RequestBody ExperienciasFiltros experienciasFiltros) {
-		return this.experienciasRepository.filter(experienciasFiltros.getLocalizacion());
+		return this.experienciasRepository.filter(experienciasFiltros.getLocalizacion(),experienciasFiltros.getAlojamiento(),experienciasFiltros.getEquipamiento());
 	}
 	
 	@GetMapping("/experiencias/{id}")

@@ -29,8 +29,14 @@ public class Experiencia {
 	
 	private Integer banios;
 	
+	private String tipoAlojamiento;
+	
+	
 	@OneToMany(mappedBy="experiencia")
 	private List<Reserva> reservas;
+	
+	@OneToMany(mappedBy="experiencia")
+	private List<Equipamiento> equipamientos;
 
 	public Long getId() {
 		return id;
@@ -102,6 +108,22 @@ public class Experiencia {
 
 	public void setBanios(Integer banios) {
 		this.banios = banios;
+	}
+
+	public String getTipoAlojamiento() {
+		return tipoAlojamiento;
+	}
+
+	public void setTipoAlojamiento(String tipoAlojamiento) {
+		this.tipoAlojamiento = tipoAlojamiento;
+	}
+
+	public List<Equipamiento> getEquipamientos() {
+		return equipamientos;
+	}
+
+	public void setEquipamientos(List<Equipamiento> equipamientos) {
+		this.equipamientos = equipamientos;
 	}
 	
 	
