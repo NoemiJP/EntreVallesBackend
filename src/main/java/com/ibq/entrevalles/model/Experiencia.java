@@ -40,6 +40,9 @@ public class Experiencia {
 	
 	@OneToMany(mappedBy="experiencia")
 	private List<Equipamiento> equipamientos;
+	
+	@OneToMany(mappedBy="experiencia")
+	private List<Restriccion> restricciones;
 
 	public Long getId() {
 		return id;
@@ -136,6 +139,16 @@ public class Experiencia {
 	public void setInformacion(String informacion) {
 		this.informacion = informacion;
 	}
+
+	public List<Restriccion> getRestricciones() {
+		return restricciones;
+	}
+
+	public void setRestricciones(List<Restriccion> restricciones) {
+		this.restricciones = restricciones;
+	}
+
+	
 	
 	
 	
