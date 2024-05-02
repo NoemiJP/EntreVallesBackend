@@ -21,6 +21,7 @@ public class Equipamiento {
 	@JsonIgnore
 	private Experiencia experiencia;
 	private String tipo;
+	private String categoria;
 	public Long getId() {
 		return id;
 	}
@@ -38,6 +39,12 @@ public class Equipamiento {
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 	
 	

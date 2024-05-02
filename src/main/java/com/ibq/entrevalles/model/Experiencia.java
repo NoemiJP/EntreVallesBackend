@@ -2,6 +2,7 @@ package com.ibq.entrevalles.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,8 @@ public class Experiencia {
 	private Integer habitaciones;
 	
 	private String descripcion;
+	@Column(length = 1500)
+	private String informacion;
 	
 	private Double precio;
 	
@@ -124,6 +127,14 @@ public class Experiencia {
 
 	public void setEquipamientos(List<Equipamiento> equipamientos) {
 		this.equipamientos = equipamientos;
+	}
+
+	public String getInformacion() {
+		return informacion;
+	}
+
+	public void setInformacion(String informacion) {
+		this.informacion = informacion;
 	}
 	
 	
