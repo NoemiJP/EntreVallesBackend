@@ -30,4 +30,9 @@ public class UsuarioController {
 		}
 	}
 	
+	@PostMapping("/registro")
+	public @ResponseBody ResponseEntity<Usuario>
+	registro(@RequestBody Usuario usuario) {
+		return ResponseEntity.ok(this.usuarioRepository.save(usuario));
+	}
 }

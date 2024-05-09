@@ -18,6 +18,8 @@ public class Usuario {
 	
 	private String apellidos;
 	
+	private String direccion;
+	
 	private String email;
 	
 	private String contrasenya;
@@ -48,6 +50,15 @@ public class Usuario {
 
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
+	}
+	
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public String getEmail() {
