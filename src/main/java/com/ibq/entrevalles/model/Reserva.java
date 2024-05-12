@@ -18,11 +18,18 @@ public class Reserva {
 	private Long id;
 	@ManyToOne
     @JoinColumn(name="experiencia_id", nullable=false)
-	@JsonIgnore
 	private Experiencia experiencia;
+	
+	private Double precioTotal;
+	
+	@ManyToOne
+    @JoinColumn(name="usuario_id", nullable=false)
+	@JsonIgnore
+	private Usuario usuario;
 	
 	private Date fechaInicio;
 	private Date fechaFin;
+	private Integer huespedesTotales;
 	public Long getId() {
 		return id;
 	}
@@ -46,6 +53,24 @@ public class Reserva {
 	}
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+	public Double getPrecioTotal() {
+		return precioTotal;
+	}
+	public void setPrecioTotal(Double precioTotal) {
+		this.precioTotal = precioTotal;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public Integer getHuespedesTotales() {
+		return huespedesTotales;
+	}
+	public void setHuespedesTotales(Integer huespedesTotales) {
+		this.huespedesTotales = huespedesTotales;
 	}
 	
 }

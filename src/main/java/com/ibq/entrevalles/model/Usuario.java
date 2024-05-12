@@ -1,11 +1,13 @@
 package com.ibq.entrevalles.model;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Usuario {
@@ -27,6 +29,9 @@ public class Usuario {
 	private Date fechaNacimiento;
 	
 	private String telefono;
+	
+	@OneToMany(mappedBy="usuario")
+	private List<Reserva> reservas;
 
 	public Long getId() {
 		return id;
@@ -91,6 +96,14 @@ public class Usuario {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 	
 	

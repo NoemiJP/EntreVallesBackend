@@ -9,4 +9,6 @@ import com.ibq.entrevalles.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 	public Usuario findByEmailAndContrasenya(String email,String contrasenya);
+	
+	public Usuario findByEmail(String email);
 }

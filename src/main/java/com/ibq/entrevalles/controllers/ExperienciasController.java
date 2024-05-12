@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibq.entrevalles.model.Experiencia;
 import com.ibq.entrevalles.model.ExperienciasFiltros;
+import com.ibq.entrevalles.model.Reserva;
 import com.ibq.entrevalles.repository.ExperienciasRepository;
 
 @RestController
@@ -24,12 +25,22 @@ public class ExperienciasController {
 
 	@PostMapping("/experiencias")
 	public @ResponseBody List<Experiencia> prueba(@RequestBody ExperienciasFiltros experienciasFiltros) {
-		return this.experienciasRepository.filter(experienciasFiltros.getLocalizacion(),experienciasFiltros.getAlojamiento(),experienciasFiltros.getEquipamiento());
+		List<Experiencia> experiencias = this.experienciasRepository.filter(experienciasFiltros.getLocalizacion(),experienciasFiltros.getAlojamiento(),experienciasFiltros.getEquipamiento());
+		for(Experiencia e: experiencias) {
+			for(Reserva r: e.getReservas()) {
+				r.setExperiencia(null);
+			}
+		}
+		return experiencias;
 	}
 	
 	@GetMapping("/experiencias/{id}")
 	public @ResponseBody Experiencia experienciesDetail(@PathVariable("id") Long id) {
-		return this.experienciasRepository.findById(id).get();
+		Experiencia experiencia = this.experienciasRepository.findById(id).get();
+		for(Reserva r:experiencia.getReservas()) {
+			r.setExperiencia(null);
+		}
+		return experiencia;
 	}
 	
 	@PostMapping("/experiencias/save")
