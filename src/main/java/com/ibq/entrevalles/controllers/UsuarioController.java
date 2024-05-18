@@ -10,6 +10,8 @@ import org.springframework.mail.MailParseException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,6 +54,12 @@ public class UsuarioController {
 	public @ResponseBody ResponseEntity<Usuario>
 	registro(@RequestBody Usuario usuario) {
 		return ResponseEntity.ok(this.usuarioRepository.save(usuario));
+	}
+	
+	@GetMapping("/login/{id}")
+	public @ResponseBody ResponseEntity<Usuario>
+	loginById(@PathVariable Long id) {
+		return ResponseEntity.ok(this.usuarioRepository.findById(id).get());
 	}
 	
 	@PostMapping("/nueva")
