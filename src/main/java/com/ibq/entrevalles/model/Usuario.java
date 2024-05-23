@@ -30,6 +30,8 @@ public class Usuario {
 	
 	private String telefono;
 	
+	private String rol;
+	
 	@OneToMany(mappedBy="usuario")
 	private List<Reserva> reservas;
 
@@ -104,6 +106,14 @@ public class Usuario {
 
 	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 	
 	

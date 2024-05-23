@@ -2,13 +2,12 @@ package com.ibq.entrevalles.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -19,7 +18,8 @@ public class Experiencia {
 	private Long id;
 	
 	private String titulo;
-	
+	@Lob
+    @Column(columnDefinition = "LONGBLOB")
 	private byte[] imagen;
 	
 	private Integer habitaciones;
@@ -39,6 +39,9 @@ public class Experiencia {
 	
 	@OneToMany(mappedBy="experiencia")
 	private List<Reserva> reservas;
+	
+	@OneToMany(mappedBy="experiencia")
+	private List<ImagenExperiencia> imagenes;
 	
 	@OneToMany(mappedBy="experiencia")
 	private List<Equipamiento> equipamientos;
@@ -148,6 +151,14 @@ public class Experiencia {
 
 	public void setRestricciones(List<Restriccion> restricciones) {
 		this.restricciones = restricciones;
+	}
+
+	public List<ImagenExperiencia> getImagenes() {
+		return imagenes;
+	}
+
+	public void setImagenes(List<ImagenExperiencia> imagenes) {
+		this.imagenes = imagenes;
 	}
 
 	

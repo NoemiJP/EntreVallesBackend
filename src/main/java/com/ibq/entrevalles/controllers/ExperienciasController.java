@@ -14,14 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibq.entrevalles.model.Experiencia;
 import com.ibq.entrevalles.model.ExperienciasFiltros;
+import com.ibq.entrevalles.model.ImagenExperiencia;
 import com.ibq.entrevalles.model.Reserva;
 import com.ibq.entrevalles.repository.ExperienciasRepository;
+import com.ibq.entrevalles.repository.ImagenExperienciaRepository;
 
 @RestController
 public class ExperienciasController {
 	
 	@Autowired
 	private ExperienciasRepository experienciasRepository;
+	
+	@Autowired
+	private ImagenExperienciaRepository imagenRepository;
 
 	@PostMapping("/experiencias")
 	public @ResponseBody List<Experiencia> prueba(@RequestBody ExperienciasFiltros experienciasFiltros) {
@@ -45,7 +50,12 @@ public class ExperienciasController {
 	
 	@PostMapping("/experiencias/save")
 	public @ResponseBody Experiencia save(@RequestBody Experiencia experiencia) {
-		return this.experienciasRepository.save(experiencia);
+		Experiencia e = this.experienciasRepository.save(experiencia);
+		for(ImagenExperiencia imagen: e.getImagenes()) {
+			imagen.setExperiencia(e);
+			imagenRepository.save(imagen);
+		}
+		return e;
 	}
 	
 	@GetMapping("/buscador")

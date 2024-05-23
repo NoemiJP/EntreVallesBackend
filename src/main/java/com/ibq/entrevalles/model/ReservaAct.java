@@ -12,66 +12,80 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Reserva {
+public class ReservaAct {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	@ManyToOne
-    @JoinColumn(name="experiencia_id", nullable=false)
-	private Experiencia experiencia;
-	
-	private Double precioTotal;
-	
+	@JoinColumn(name = "actividad_id", nullable = false)
+	private Actividad actividad;
+
+	private Double precio;
+
 	@ManyToOne
-    @JoinColumn(name="usuario_id", nullable=false)
+	@JoinColumn(name = "usuario_id", nullable = false)
 	@JsonIgnore
 	private Usuario usuario;
-	
+
 	private Date fechaInicio;
 	private Date fechaFin;
-	private Integer huespedesTotales;
-	
+	private Integer personas;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Experiencia getExperiencia() {
-		return experiencia;
+
+	public Actividad getActividad() {
+		return actividad;
 	}
-	public void setExperiencia(Experiencia experiencia) {
-		this.experiencia = experiencia;
+
+	public void setActividad(Actividad actividad) {
+		this.actividad = actividad;
 	}
-	public Date getFechaInicio() {
-		return fechaInicio;
+
+	public Double getPrecio() {
+		return precio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
 	}
-	public Date getFechaFin() {
-		return fechaFin;
-	}
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
-	}
-	public Double getPrecioTotal() {
-		return precioTotal;
-	}
-	public void setPrecioTotal(Double precioTotal) {
-		this.precioTotal = precioTotal;
-	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Integer getHuespedesTotales() {
-		return huespedesTotales;
+
+	public Date getFechaInicio() {
+		return fechaInicio;
 	}
-	public void setHuespedesTotales(Integer huespedesTotales) {
-		this.huespedesTotales = huespedesTotales;
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
-	
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public Integer getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(Integer personas) {
+		this.personas = personas;
+	}
+
 }
