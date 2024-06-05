@@ -7,5 +7,4 @@ import com.ibq.entrevalles.model.ImagenExperiencia;
 
 @Repository
 public interface ImagenExperienciaRepository extends JpaRepository<ImagenExperiencia, Long>{
-
 }

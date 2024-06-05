@@ -93,7 +93,7 @@ public class ActividadController {
     
     @GetMapping("/activities")
     public ResponseEntity<List<Actividad>> actividades(){
-    	List<Actividad> actividades = actividadRepository.findAll();
+    	List<Actividad> actividades = actividadRepository.findActividades();
     	for(Actividad act: actividades) {
     		act.setReservas(null);
     	}
