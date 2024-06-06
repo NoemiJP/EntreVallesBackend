@@ -17,7 +17,7 @@ public class EntrevallesConfig {
 	    mailSender.setPort(587);
 	    
 	    mailSender.setUsername("entrevallesymontanias@gmail.com");
-	    mailSender.setPassword("nyfa vwnn prhf ipyk");
+	    mailSender.setPassword("uyfm uvty zbvg okhr");
 	    
 	    Properties props = mailSender.getJavaMailProperties();
 	    props.put("mail.transport.protocol", "smtp");
