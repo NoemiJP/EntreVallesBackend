@@ -56,6 +56,10 @@ public class ReservaController {
 	
 	@GetMapping("/reservas/{id}")
 	public @ResponseBody List<Reserva> reservas(@PathVariable Long id) {
-		return this.reservaRepository.findByUsuarioId(id);
+		List<Reserva> reservas = this.reservaRepository.findByUsuarioId(id);
+		for(Reserva r:reservas) {
+			r.getExperiencia().setReservas(null);
+		}
+		return reservas;
 	}
 }
