@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibq.entrevalles.model.Actividad;
 import com.ibq.entrevalles.model.ImagenActividad;
+import com.ibq.entrevalles.model.Reserva;
 import com.ibq.entrevalles.model.ReservaAct;
 import com.ibq.entrevalles.model.ReservaActRequest;
 import com.ibq.entrevalles.model.Usuario;
@@ -80,6 +81,15 @@ public class ActividadController {
     	reserva.getActividad().setReservas(null);
     	return reserva;
 }
+    
+    @GetMapping("/reservasAct/{id}")
+	public @ResponseBody List<ReservaAct> reservas(@PathVariable Long id) {
+		List<ReservaAct> reservas = this.reservaActRepository.findByUsuarioId(id);
+		for(ReservaAct r:reservas) {
+			r.getActividad().setReservas(null);
+		}
+		return reservas;
+	}
     
     @PostMapping("/actividades/save")
 	public @ResponseBody Actividad save(@RequestBody Actividad actividad) {
